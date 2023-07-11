@@ -1,0 +1,576 @@
+body {
+  background: #f0f2f5;
+}
+
+/* side bar */
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 15px 6%;
+}
+
+/* ----------------------------------------------left side-------------------------------------- */
+.left-sidebar {
+  flex-basis: 25%;
+  align-self: flex-start;
+}
+
+.sidebar-profile-box {
+  background-color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+}
+
+.img-content {
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.img-content:active {
+  transform: scale(0.96);
+}
+
+.img-content img {
+  margin: 5px 0;
+  width: 155px;
+  height: 140px;
+  line-height: 100px;
+  color: white;
+  font-size: 45px;
+  border-radius: 50%;
+  transform: translateZ(50px);
+  object-fit: cover;
+  transform-style: preserve-3d;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#user_name {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.avatar-name {
+  margin: 10px;
+  transform: translateZ(50px);
+}
+
+.avatar-name a {
+  text-decoration: none;
+  color: #000;
+}
+
+.profile-box,
+.dark-mode-box {
+  background: #fff;
+  margin: 12px 0;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.profile-box {
+  padding: 0 20px;
+  margin: 12px 0;
+}
+
+.profile-box #profile-button {
+  margin: 20px 0 10px;
+  padding: 0 25px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.dark-mode-box button {
+  text-decoration: none;
+  font-size: 17px;
+  margin: 20px 0 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
+
+.profile-box:active,
+.dark-mode-box:active,
+.speaker-box:active,
+.clear-box:active,
+.send-button:active,
+.mic-on:active {
+  transform: scale(0.96);
+}
+
+.dark-mode-box {
+  background: #fff;
+  margin: 12px 0;
+  padding: 0px 25px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dark-mode-box button {
+  text-decoration: none;
+  font-size: 17px;
+  margin: 10px 0 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dark-mode-box:active {
+  transform: scale(0.96);
+}
+
+.logout-box {
+  background: #fff;
+  margin: 12px 0;
+  padding: 0px 25px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.logout-box button {
+  text-decoration: none;
+  font-size: 17px;
+  margin: 10px 0 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dark-mode-box:active {
+  transform: scale(0.96);
+}
+
+.profile-box:hover,
+.dark-mode-box:hover,
+.logout-box:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.clear-box,
+.speaker-box {
+  background: #fff;
+  margin: 12px 0;
+  padding: 0px 25px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.clear-box button,
+.speaker-box button {
+  text-decoration: none;
+  font-size: 17px;
+  margin: 10px 0 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-bar {
+  background: #fff;
+  margin: 12px 0;
+  padding: 0px 25px;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.nav-bar .nav-bar-contents button {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  margin: 10px 0 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-bar .nav-bar-contents a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 10px 0 10px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* **********************************************dark mode************************************** */
+
+.dark-mode {
+  background-color: #0c0707c0;
+  color: white;
+  transition: 0.4s ease-out;
+}
+
+.dark-mode .sidebar-profile-box,
+.dark-mode .message_box,
+.dark-mode .function_box {
+  border: 1px solid grey;
+  background-color: rgb(60, 64, 67);
+}
+
+.dark-mode .avatar-name a {
+  color: white;
+}
+
+.dark-mode .profile-box,
+.dark-mode .dark-mode-box,
+.dark-mode .logout-box,
+.dark-mode .nav-bar,
+.dark-mode .clear-box,
+.dark-mode .speaker-box {
+  background-color: rgb(60, 64, 67);
+  border: 1px solid grey;
+  background-color: rgb(60, 64, 67);
+}
+
+.dark-mode #user-input-text {
+  background-color: rgb(60, 64, 67);
+  color: white;
+  border: none;
+}
+
+.dark-mode .profile-box button,
+.dark-mode .dark-mode-box button,
+.dark-mode .logout-box button,
+.dark-mode .speaker-box button,
+.dark-mode .clear-box button {
+  color: white;
+}
+
+.dark-mode .message .left {
+  background-color: #fff;
+}
+
+.dark-mode .message-text {
+  color: #000;
+}
+
+.dark-mode .send-button,
+.dark-mode .clear-button,
+.dark-mode .mic-on,
+.dark-mode .speaker-on {
+  transition: 1.4s ease;
+  background-color: rgb(0, 164, 0);
+}
+
+.dark-mode .message.right .message-text {
+  background-color: rgb(0, 164, 0);
+}
+
+.dark-mode .nav-bar-contents button,
+.dark-mode .nav-bar-contents a {
+  color: white;
+}
+
+/* ******************************************end************************************************/
+.nav-bar {
+  display: none;
+}
+
+.nav-bar-contents {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-bar-contents a:hover {
+  color: black;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-bar-contents button:hover {
+  color: black;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* left-side-bar responsive  */
+
+/*     main content  */
+.main-content {
+  flex-basis: 70%;
+  align-self: flex-start;
+}
+
+.message_box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+  height: 500px;
+}
+
+.function_box {
+  margin-top: 6px;
+  background-color: white;
+  border-radius: 10px;
+  bottom: 0;
+  transform-style: preserve-3d;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#user-input {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: 160px;
+}
+
+#user-input-text {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.send-button,
+.clear-button,
+.mic-on,
+.speaker-on {
+  width: 5%;
+  margin-right: 8px;
+  height: 100%;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(63, 63, 164);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.speaker-on {
+  display: flex;
+  align-items: center;
+}
+
+.speaker-on span {
+  margin-left: 2px;
+}
+
+.chat-box {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-margin-bottom: 9999px;
+  scroll-padding-bottom: 20px;
+    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-color: transparent transparent;
+}
+
+.chat-box::-webkit-scrollbar {
+  display: none; 
+  scrollbar-width: none;
+}
+
+.chat-box-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.dark-mode .chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dark-mode .chat-box-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.dark-mode .chat-box::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+.chat-history {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  transition: scroll-behavior 1.9s ease-in-out;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+  background-color: blue;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message.left .message-text {
+  background-color: #e6e6e6;
+  border-radius: 5px 5px 5px 0;
+  margin-right: auto;
+  padding: 10px;
+}
+
+.message.right .message-text {
+  background-color: rgb(63, 63, 164);
+  color: #fff;
+  border-radius: 10px 10px 0 10px;
+  margin-left: auto;
+  padding: 8px;
+}
+
+.message-text {
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+/* **********************************************responsive**************************************** */
+@media only screen and (max-width: 600px) {
+  .left-sidebar {
+    padding: 0px 3%;
+    /* display: none; */
+  }
+
+  .sidebar-profile-box {
+    display: none;
+    top: 0;
+  }
+
+  .box {
+    padding: 0px 3%;
+  }
+
+  .left-sidebar {
+    flex-basis: 100%;
+    position: relative;
+    top: unset;
+  }
+
+  #main-content {
+    padding: 0px 3%;
+    flex-basis: 100%;
+    position: relative;
+    top: unset;
+  }
+
+  .chat_box {
+    flex-basis: 100%;
+  }
+
+  .function_box {
+    flex-basis: 100%;
+  }
+
+  .message_box {
+    height: 300px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+
+  .speaker-on {
+    display: none;
+  }
+
+  #user-input-text {
+    height: 35px;
+  }
+
+  .chat-input .send-button {
+    width: 8%;
+    margin-right: 3px;
+    margin-left: 8px;
+    height: 35px;
+  }
+
+  .chat-input .mic-on {
+    width: 8%;
+    margin-right: 3px;
+    margin-left: 5px;
+    height: 35px;
+  }
+
+  .chat-input .clear-button {
+    width: 8%;
+    margin-left: 5px;
+    height: 35px;
+  }
+
+  .nav-bar {
+    display: block;
+  }
+
+  .profile-box,
+  .logout-box,
+  .dark-mode-box,
+  .speaker-box,
+  .clear-box {
+    display: none;
+  }
+}
+
+
+
+

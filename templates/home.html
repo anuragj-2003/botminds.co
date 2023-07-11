@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOTMINDS | Chat</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/lightbox.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/home.css')}}"
+    />
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/bubbles.css')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+  </head>
+  <script src="{{url_for('static', filename='js/darkMode.js')}}"></script>
+
+  <body>
+    <div class="box">
+      <!-- left side -->
+      <div class="left-sidebar">
+        <div class="sidebar-profile-box">
+          <div class="img-content">
+              <img src="{{ image_path }}" alt="" class="avatar" id="avatar" name="avatar" style="width: 100%" />
+            </a>
+          </div>
+          <div class="avatar-name">
+            <a href="{{ url_for('profile') }}" id="user_name">{{ name }}</a>
+          </div>
+        </div>
+        <div
+          class="dark-mode-box"
+          onclick="location.href='/profile';"
+          id="profile-box"
+        >
+          <button id="profile-button">Profile</button>
+        </div>
+        <div class="dark-mode-box" onclick="toggleMode();">
+          <button id="mode-button">Dark Mode</button>
+        </div>
+
+        <div class="speaker-box" onclick="textToSpeech()">
+          <button class="speaker-toggle">Speaker ON</button>
+        </div>
+        <div class="clear-box" id="clear-button">
+          <button class="clear-conversation">Clear</button>
+        </div>
+        <div class="logout-box" onclick="location.href='/logout'">
+          <button class="logout">Logout</button>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-bar-contents">
+            <a href="{{ url_for('profile') }}" class="profile-page">
+              <span class="material-symbols-outlined"> person </span>
+            </a>
+            <button
+              class="dark-theme"
+              id="dark-mode-toggle"
+              onclick="toggleMode();"
+            >
+              <span id="dark_mode" class="material-symbols-outlined">
+                dark_mode
+              </span>
+              <span
+                class="material-symbols-outlined"
+                style="display: none"
+                id="white_mode"
+              >
+                wb_sunny
+              </span>
+            </button>
+            <button class="speaker-on-nav" onclick="speakRecentBotResponse();">
+              <span class="material-symbols-outlined"> record_voice_over </span>
+            </button>
+            <button class="clear-btn-nav" id="clear-btn">
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+            <button class="logout-user">
+              <span class="material-symbols-outlined"> logout </span>
+            </button>
+          </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/lightbox-plus-jquery.js') }}"></script>
+      </div>
+      
+        <div class="main-content" id="main-content">
+          
+          
+          <!--  -->
+          <form id="my-form" method="POST" action="/response">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          
+          <div class="message_box">
+            <div class="img-box"></div>
+            <div class="chat-box" id="chat-box" data-simplebar>
+              <div class="chat-history">
+                <div class="message left">
+                  <div class="message-text">
+                    <div class="reply-section">
+                      <p>Hi {{ name }} </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="message right">
+                </div>
+              </div>
+            </div>
+            <script>
+              function speak(elementId) {
+                const textToSpeak =
+                  document.getElementById(elementId).textContent;
+                const speech = new SpeechSynthesisUtterance();
+                speech.text = textToSpeak;
+                window.speechSynthesis.speak(speech);
+              }
+            </script>
+          </div>
+          
+          <!--  -->
+          <div class="function_box">
+            <div id="user-input">
+              <input type="text" id="user-input-text" placeholder="Type your message..." autofocus>
+              <!-- <textarea
+                class="input-box"
+
+                id="user-input-text"
+                placeholder="Type Something"
+                autofocus
+              ></textarea> -->
+              <button type="button" class="send-button" id="send-button">
+                <span class="material-symbols-outlined"> send </span>
+              </button>
+              <button type="button"
+                class="mic-on"
+                id="start-button"
+                onclick="toggleRecording();"
+              >
+                <span class="material-symbols-outlined"> settings_voice </span>
+              </button>
+            </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  <section>
+    <audio
+      src="{{url_for('static', filename='bub.mp3')}}"
+      id="audio"
+      controls
+      style="display: none"
+    ></audio>
+  </section>
+  <script src="{{url_for('static', filename='js/focus.js')}}"></script>
+  <script src="{{url_for('static', filename='js/mic-on.js')}}"></script>
+  <script src="{{url_for('static', filename='js/sendChat.js')}}"></script>
+  <script src="{{url_for('static', filename='js/clear-textarea.js')}}"></script>
+  <script src="{{url_for('static', filename='js/lightbox-plus-jquery.js')}}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+// 
+
+$(document).ready(function() {
+  function sendMessage() {
+    var userInput = $("#user-input-text").val();
+    $("#user-input-text").val('');
+
+    var userMessage = $('<div class="message right" style="display: none;"><div class="message-text">' + userInput + '</div></div>');
+    $('.chat-history').append(userMessage);
+    userMessage.fadeIn(400);
+    
+    scrollToBottom();
+    
+
+    $.ajax({
+      url: '/response',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        user_input: userInput
+      },
+      headers: { "X-CSRFToken": $("input[name=csrf_token]").val() },
+
+      success: function(data) {
+        var botResponse = data.response;
+        $(".chat-history").append('<div class="message left"><div class="message-text"><div class="reply-section">' + botResponse + '</div></div></div>');
+        scrollToBottom();
+      }
+      ,
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  }
+
+function scrollToBottom() {
+    var chatHistory = document.querySelector('.chat-history');
+    var lastMessage = chatHistory.lastElementChild;
+  
+    if (lastMessage) {
+      lastMessage.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }
+  
+  $('#send-button').click(function() {
+    sendMessage();
+  });
+
+  $('#user-input-text').keypress(function(event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      sendMessage();
+    }
+  });
+});
+
+    </script> 
+  
+  
+
+<script>
+  // darkmode
+  function toggleMode() {
+    var body = document.body;
+    var button = document.getElementById("mode-button");
+    var isDarkMode = body.classList.contains("dark-mode");
+
+    if (isDarkMode) {
+      body.classList.remove("dark-mode");
+      body.style.transition =
+        "background-color 0.4s ease-out, color 0.4s ease-out";
+      button.textContent = "Dark Mode";
+      localStorage.setItem("mode", "light");
+    } else {
+      body.classList.add("dark-mode");
+      body.style.transition =
+        "background-color 0.4s ease-out, color 0.4s ease-out";
+      button.textContent = "Light Mode";
+      localStorage.setItem("mode", "dark");
+    }
+  }
+  var mode = localStorage.getItem("mode");
+  if (mode === "dark") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("mode-button").textContent = "Light Mode";
+  } else {
+    document.body.classList.remove("dark-mode");
+    document.getElementById("mode-button").textContent = "Dark Mode";
+  }
+</script>
+<script>
+    const chatBox = document.getElementById('chat-box');
+new SimpleBar(chatBox);
+
+  </script>
+
+
+
+  <script>
+    const chatHistoryContainer = document.querySelector('.chat-history');
+const recentBotResponseDiv = document.querySelector('.recent-bot-response');
+
+recentBotResponseDiv.addEventListener('click', () => {
+  speakRecentBotResponse();
+});
+
+function speakRecentBotResponse() {
+  const recentMessage = document.querySelector('.message.left:last-child .reply-section');
+  if (recentMessage) {
+    const botResponse = recentMessage.textContent;
+    speakBotResponse(botResponse);
+  }
+}
+
+function speakBotResponse(response) {
+  const speech = new SpeechSynthesisUtterance();
+  speech.text = response;
+  window.speechSynthesis.speak(speech);
+}
+
+  </script>
+
+</body>
+</html>

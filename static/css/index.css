@@ -1,0 +1,241 @@
+* {
+    font-stretch: expanded;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* border-radius: 8px; */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+nav ul li a span {
+    color: white;
+}
+
+nav ul li a:hover {
+    color: rgb(158, 158, 184);
+}
+
+nav ul li button {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 21px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.link1 {
+    border-bottom: 2px solid white;
+    padding-bottom: 2px;
+}
+
+/* --------------------------------responsive ---------------------- */
+@media only screen and (max-width:800px) {
+    nav ul li a {
+        letter-spacing: 0;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width:500px) {
+    nav ul li a {
+        letter-spacing: 0;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    nav ul li a {
+        letter-spacing: 0;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    nav ul li a {
+        letter-spacing: 0;
+        font-size: 20px;
+    }
+}
+
+
+/* *************************************end of nav bar******************************* */
+
+
+body {
+    margin: 0;
+}
+
+main {
+    height: 100vh;
+    perspective: 2px;
+}
+
+section {
+    transform-style: preserve-3d;
+    position: relative;
+    height: 75vh;
+    display: grid;
+    place-items: center;
+}
+
+#particles-js h1 {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blink 4s infinite;
+    border-radius: 12px;
+    border: none;
+    font-size: 26px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#particles-js {
+    background-color: #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+}
+
+#particles-js .particle {
+    background-color: rgb(63, 63, 164);
+}
+
+.no-parallax {
+    background: #111111;
+    z-index: 1;
+    color: #f9f9f9;
+}
+
+#about {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.parallax {
+    height: 55vh;
+    background-color: rgb(63, 63, 164);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.parallax::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    transform: translateZ(-1px) scale(1.5);
+    background-size: 100%;
+}
+
+.parallax img {
+    max-width: 100%;
+    height: auto;
+}
+
+.developers-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.developer1 {
+    margin-right: 50px;
+}
+
+.developer1,
+.developer2 {
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 260px;
+    height: 260px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.developer2 {
+    background-color: rgb(0, 191, 243);
+}
+
+.developer1 img,
+.developer2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover cover;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .developer1,
+    .developer2 {
+        width: 160px;
+        height: 160px;
+    }
+
+    #about {
+        font-size: 16px;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+#open-modal1,
+#open-modal2 {
+    background: transparent;
+    cursor: pointer;
+}

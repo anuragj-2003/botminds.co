@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{url_for('static', filename='images/logo3.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='images/logo3.ico')}}" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/otp_timer.js')}}""></script>
+    <link rel=" stylesheet" href="{{url_for('static', filename='css/otp.css')}}">
+    <title>BOTMINDS | ENTER OTP</title>
+</head>
+
+<body>
+    <div class="otp_box">
+        <div class="box">
+            <form action="{{ url_for('otp') }}" method="post" name="otp_enter_form">
+                <!-- {{csrf_token}} --> {{ form.csrf_token }}
+                <h2>Enter OTP<span class="material-symbols-outlined">
+                        key
+                    </span></h2>
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                <div class="space">
+                    <input type="hidden" name="actual_otp" value="{{ otp }}">
+                    <input type="hidden" name="email" value="{{ email }}">
+                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                    <input type="text" class="resend-otp-btn" name="otp" id="input_otp" placeholder="Enter OTP" required minlength="4" autofocus>
+                    <!-- <button type="button" class="send-otp-btn" id="generate-otp-btn"
+                        onclick="startTimer();">Generate OTP</button> -->
+                    <button type="submit" class="submit-otp-btn" id="submit-otp-btn">Submit</button>
+                    <a href="{{url_for('forgot_password')}}">wrong email?</a>
+                    <div class="divider"></div>
+                    <a href="{{ url_for('login') }}" id="login_page_link">Remember Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

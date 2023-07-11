@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{url_for('static', filename='images/logo3.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='images/logo3.ico')}}" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/otp_timer.js')}}""></script>
+    <link rel=" stylesheet" href="{{url_for('static', filename='css/otp.css')}}">
+    <title>BOTMINDS | ENTER OTP</title>
+</head>
+
+<body>
+    <div class="otp_box">
+        <div class="box">
+            <h2>Enter OTP</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('verify_otp') }}" method="post">
+                {{ form.csrf_token }}
+                <input type="hidden" name="name" value="{{ session.get('name') }}">
+                <input type="hidden" name="email" value="{{ session.get('email') }}">
+                <input type="hidden" name="password" value="{{ session.get('password') }}">
+                <input type="text" id="otp" name="otp" required autofocus placeholder="Enter Otp To Confirm Email">
+                <button type="submit" id="submit-otp-btn">Verify OTP</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>

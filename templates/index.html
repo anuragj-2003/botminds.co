@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOTMINDS</title>
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index.css')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+  </head>
+
+  <nav>
+    <div class="logo">
+      <a href="/login" class="logo" style="font-family: PriceDown">
+        <img
+          src="{{url_for('static', filename='images/logo.png')}}"
+          alt=""
+          style="
+            width: 150px;
+            display: flex;
+            align-items: center;
+            padding-top: 5px;
+          "
+        />
+      </a>
+    </div>
+    <ul>
+      <li><a href="{{ url_for('register') }}">Register</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+    </ul>
+  </nav>
+
+  <body>
+    <main>
+      <section class="no-parallax" id="particles-js">
+        <h1 style="animation: blink 4s infinite">Welcome</h1>
+        <!-- <script src="/static/js/particles.js"></script> -->
+        <script src="{{url_for('static', filename='js/particles.js')}}"></script>
+        <!-- <script src="/static/js/app.js"></script> -->
+        <script src="{{url_for('static', filename='js/app.js')}}"></script>
+        <script src="{{url_for('static', filename='js/particles.min.js')}}"></script>
+        <!-- <script src="/static/js/particles.min.js"></script> -->
+      </section>
+      <section class="parallax bg">
+        <img src="{{url_for('static', filename='images/logo.png')}}" alt="" />
+      </section>
+      <section class="no-parallax">
+        <h1 style="text-align: center" id="about">
+          Get instant answers to your questions and personalised recommendations
+          with our user-friendly
+          <span style="animation: blink 4s infinite">bot</span>.
+        </h1>
+      </section>
+      <section class="parallax bg">
+        <img src="{{url_for('static', filename='images/logo.png')}}" alt="" />
+      </section>
+      <section class="no-parallax developers-details">
+        <h1>Developers</h1>
+        <div class="developers-profile">
+          <div class="developer1">
+            <a
+              href="https://www.linkedin.com/in/pankesh-singh-rana"
+              id="open-modal1"
+              ><img
+                src="{{url_for('static', filename='images/developer1.jpg')}}"
+                alt=""
+            /></a>
+          </div>
+          <div class="developer2">
+            <a
+              href="https://www.linkedin.com/in/anuragj30122003"
+              id="open-modal2"
+              ><img
+                src="{{url_for('static', filename='images/developer2.png')}}"
+                alt=""
+            /></a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

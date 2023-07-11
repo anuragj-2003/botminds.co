@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{url_for('static', filename='images/logo3.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='images/logo3.ico')}}" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>BOTMINDS | Login</title>
+</head>
+
+<body>
+    <div class="login_box">
+        <div class="box">
+            <form action="" method="post" name="login_form" action="{{ url_for('login') }}">
+                {{ form.csrf_token }}
+                <h2>Login</h2>
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+
+                <div class="space">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    {{ form.email }}
+                    {{ form.password }}
+                    <button type="submit" class="login-btn" id="login-btn" name="login">Login</button>
+                    <a href="{{ url_for('forgot_password') }}" id="forgot_password_link">Forgotten Password?</a>
+                    <div class="divider"></div>
+                    <a href="{{ url_for('register') }}" id="register_page_link">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

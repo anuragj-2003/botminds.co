@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Not Logged In</title>
+    <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='css/not_logged_in.css')}}"
+  />
+</head>
+<body>  
+    <div class="message">
+        <h1>User Not Logged In</h1>
+        <p>Please log in to access this page.</p>
+        <div class="divider"></div>
+        <a href="{{ url_for('profile') }}" id="profile_page_link">Go Back</a>
+    </div>
+</body>
+</html>

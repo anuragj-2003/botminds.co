@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/change_email.css')}}"
+    />
+    <title>BOTMINDS | E-Mail</title>
+  </head>
+
+  <body>
+    <div class="change_email_box">
+      <div class="box">
+        <form action="" method="post" name="change_email_form">
+          <h2>Enter New E-Mail</h2>
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <ul class="flash-messages">
+            {% for message in messages %}
+            <li class="{{ message[1] }}">{{ message[0] }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <div class="space">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" autofocus />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter new email-id"
+              required
+            />
+            <button
+              type="submit"
+              class="change-email-btn"
+              id="change-email-btn"
+            >
+              submit
+            </button>
+            <div class="divider"></div>
+            <a href="{{ url_for('profile') }}" id="profile_page_link"
+              >Go Back</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOTMINDS | Profile</title>
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/x-icon"
+    />  
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='images/logo3.ico')}}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/profile.css')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+  </head>
+  <nav>
+    <div class="logo">
+      <a
+        href="{{ url_for('chat') }}"
+        class="logo"
+        style="font-family: PriceDown"
+        id="chat_link"
+      >
+        <img
+          src="{{url_for('static', filename='images/logo.png')}}"
+          alt=""
+          style="
+            width: 150px;
+            display: flex;
+            align-items: center;
+            padding-top: 5px;
+          "
+        />
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="{{ url_for('chat') }}" id="home-link"
+          ><span class="material-symbols-outlined" style="margin-top: 4px">
+            <span class="loader"></span>
+            forum
+          </span></a
+        >
+      </li>
+      <li>
+        <a href="{{ url_for('profile') }}" id="profile-link"
+          ><span class="material-symbols-outlined" id="toggleDark">
+            person
+          </span></a
+        >
+      </li>
+      <li>
+        <button style="margin-right: 30px" onclick="toggleMode();">
+          <span class="material-symbols-outlined"> dark_mode </span>
+        </button>
+      </li>
+      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+  </nav>
+
+  <body>
+    <div class="profile_edit_box">
+      <div class="box">
+        <form action="" method="post" name="profile_edit_form">
+          <h2>Edit Profile</h2>
+          <div class="space">
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              value="{{ name }}"
+            />
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="hidden" id="selected-avatar" name="avatar_value" value="" />
+            <button class="change-avatar-btn" type="button" id="open-modal">
+              <div class="avatar-img">
+                <img
+                src="{{ image_path }}"
+                  alt=""
+                  class="avatar"
+                />
+              </div>
+              Change Avatar
+            </button> 
+            <a href="{{ url_for('validate_password_page') }}" id="change_email"
+              >Change Email?</a
+            ><br /><br />
+            <a href="{{ url_for('seeking_password') }}" id="change_password"
+              >Change Password?</a
+            ><br /><br />
+            <!-- <a href="{{ url_for('delete_account') }}" id="delete-modal-btn">Delete account</a> -->
+            <button id="delete-modal-btn" type="button">Delete Account</button>
+            <div class="divider"></div>
+            <button type="submit" class="save-btn" id="save-btn">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <section>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="image-container" id="avatar-images">
+          <img
+            src="{{url_for('static', filename='images/avatar-m1.png')}}"
+            alt="1"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-m2.png')}}"
+            alt="2"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-m3.png')}}"
+            alt="3"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-m4.png')}}"
+            alt="4"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-m5.png')}}"
+            alt="5"
+            class="image"
+          />
+
+          <img
+            src="{{url_for('static', filename='images/avatar-f1.png')}}"
+            alt="6"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-f2.png')}}"
+            alt="7"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-f3.png')}}"
+            alt="8"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-f4.png')}}"
+            alt="9"
+            class="image"
+          />
+          <img
+            src="{{url_for('static', filename='images/avatar-f5.png')}}"
+            alt="10"
+            class="image"
+          />
+          <input type="hidden" id="selected-avatar" name="avatar_value" value="" />
+          <button type="button" id="select-avatar" class="select-avatar">Select Avatar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+<section>   
+  <div class="delete-modal" id="delete-modal">
+    <div class="delete-content">
+      <p>You sure want to delete account ?</p>
+      <div class="delete-account-area">
+        <span class="close-delete-modal">No</span>
+        <a href="{{ url_for('delete_account') }}" id="delete-account-btn" class="delete-account-btn">Delete Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+  <script src="{{url_for('static', filename='js/modal-open.js')}}"></script>
+  <script src="{{url_for('static', filename='js/delete-modal.js')}}"></script>
+</html>
+<script>
+  var avatarImages = document.querySelectorAll("#avatar-images img");
+  var selectedAvatar = document.querySelector("#selected-avatar");
+
+  avatarImages.forEach(function (img) {
+    img.addEventListener("click", function () { 
+      avatarImages.forEach(function (img2) {
+        img2.classList.remove("selected");
+      });
+      img.classList.add("selected");
+      selectedAvatar.value = img.alt;
+    });
+  });
+</script>
+<script>
+  function toggleMode() {
+    var body = document.body;
+    var button = document.getElementById("mode-button");
+    var isDarkMode = body.classList.contains("dark-mode");
+
+    if (isDarkMode) {
+      body.classList.remove("dark-mode");
+      body.style.transition =
+        "background-color 0.4s ease-out, color 0.4s ease-out";
+      button.textContent = "Dark Mode";
+      localStorage.setItem("mode", "light");
+    } else {
+      body.classList.add("dark-mode");
+      body.style.transition =
+        "background-color 0.4s ease-out, color 0.4s ease-out";
+      button.textContent = "Light Mode";
+      localStorage.setItem("mode", "dark");
+    }
+  }
+  var mode = localStorage.getItem("mode");
+  if (mode === "dark") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("mode-button").textContent = "Light Mode";
+  } else {
+    document.body.classList.remove("dark-mode");
+    document.getElementById("mode-button").textContent = "Dark Mode";
+  }
+</script>
+
+<script>
+  const deleteModal = document.getElementById("delete-modal-btn");
+const modal_delete_account = document.getElementById("delete-modal");
+const closeModalAccount = document.querySelector(".close-delete-modal");
+
+deleteModal.addEventListener("click", () => {
+  modal_delete_account.style.display = "block";
+  modal_delete_account.classList.add("slide-in");
+});
+
+closeModalAccount.addEventListener("click", () => {
+  modal_delete_account.classList.add("slide-out");
+  setTimeout(() => {
+    modal_delete_account.style.display = "none";
+    modal_delete_account.classList.remove("slide-out");
+  }, 600);
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target == modal_delete_account) {
+    modal_delete_account.classList.add("slide-out");
+    setTimeout(() => {
+      modal_delete_account.style.display = "none";
+      modal_delete_account.classList.remove("slide-out");
+    }, 600);
+  }
+});
+
+</script>
