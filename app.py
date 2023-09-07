@@ -96,7 +96,7 @@ class ChangePasswordForm(FlaskForm):
 def index():
     return render_template("index.html")
 
-
+//registers the form 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
